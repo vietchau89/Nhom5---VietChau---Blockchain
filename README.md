@@ -163,6 +163,8 @@ Mở file index.html trong trình duyệt hoặc chạy server cục bộ bằng
 Kết nối MetaMask và sử dụng DApp để bỏ phiếu.
 
 👨‍💻 Tác giả
+
 Nguyễn Việt Châu
+
 MSV: 1571020025
 

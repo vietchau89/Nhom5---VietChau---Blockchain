@@ -1,170 +1,118 @@
-⏱ Khóa Thời Gian Biểu Quyết Dựa Trên Blockchain
+⏳ Khóa Thời Gian Biểu Quyết - Time-Locked Voting Smart Contract
 
-Giới thiệu chung về sản phẩm
+🧠 Giới thiệu chung
 
-Dự án Khóa thời gian biểu quyết là một ứng dụng phi tập trung (DApp) được xây dựng trên nền tảng blockchain nhằm cung cấp một cơ chế biểu quyết minh bạch, an toàn và có thời hạn rõ ràng. Hệ thống sử dụng các hợp đồng thông minh (smart contracts) để quản lý quá trình biểu quyết, đảm bảo rằng các phiếu bầu chỉ được phép thực hiện trong một khoảng thời gian xác định và không thể bị thay đổi sau khi thời gian biểu quyết kết thúc. Dự án hướng tới việc ứng dụng công nghệ blockchain để tăng cường tính minh bạch và bảo mật trong các quy trình biểu quyết trực tuyến, chẳng hạn như bầu cử, bỏ phiếu cộng đồng hoặc các quyết định tổ chức.
-Mục tiêu chính của dự án:
+"Khóa thời gian biểu quyết" là một hệ thống bỏ phiếu điện tử ứng dụng công nghệ Blockchain nhằm đảm bảo tính minh bạch, công bằng và không thể gian lận trong quá trình biểu quyết.
 
-Đảm bảo tính minh bạch: Mọi phiếu bầu được lưu trữ trên blockchain, không thể chỉnh sửa hay xóa.
-Khóa thời gian: Chỉ cho phép bỏ phiếu trong khoảng thời gian được định sẵn.
-Phi tập trung: Loại bỏ trung gian, tăng cường sự tin cậy và bảo mật.
+Hệ thống cho phép người dùng tham gia bỏ phiếu thông qua một giao diện DApp (Decentralized Application) kết nối với ví blockchain như MetaMask. Điểm nổi bật của ứng dụng là áp dụng cơ chế khóa thời gian (time-lock) – chỉ cho phép gửi phiếu trong một khoảng thời gian đã được xác định trước. Sau khi thời gian kết thúc, hợp đồng thông minh sẽ tự động khóa quyền bỏ phiếu và công bố kết quả một cách minh bạch, không thể thay đổi.
 
-Dự án này phù hợp để triển khai trong các ứng dụng như quản trị tổ chức phi tập trung (DAO), bầu cử trực tuyến, hoặc các hệ thống biểu quyết cộng đồng.
-Sơ đồ hệ thống và các chức năng
-Sơ đồ hệ thống
-Hệ thống bao gồm các thành phần chính:
+Ứng dụng có thể triển khai trong các môi trường cần biểu quyết công khai nhưng an toàn, như: cuộc bầu cử nội bộ, bình chọn ý tưởng, quản trị DAO, v.v.
 
-Người dùng (Voters): Những cá nhân tham gia bỏ phiếu thông qua giao diện DApp.
-Hợp đồng thông minh (Smart Contract): Được triển khai trên blockchain (ví dụ: Ethereum) để quản lý quy trình biểu quyết, bao gồm thời gian bắt đầu, thời gian kết thúc, và kết quả biểu quyết.
-Giao diện người dùng (Frontend): Một ứng dụng web (sử dụng HTML, JavaScript, Web3.js) để người dùng tương tác với hợp đồng thông minh.
-Blockchain: Lưu trữ dữ liệu biểu quyết và đảm bảo tính bất biến.
-Ví tiền điện tử (Wallet): Người dùng sử dụng ví như MetaMask để xác thực danh tính và gửi giao dịch.
+🔧 Tính năng nổi bật
+✅ Khởi tạo biểu quyết: Người quản trị có thể tạo cuộc biểu quyết mới với tiêu đề, danh sách lựa chọn và thời gian bắt đầu/kết thúc cụ thể.
 
+✅ Đồng hồ đếm ngược thời gian biểu quyết: Giao diện hiển thị thời gian còn lại để người dùng biết rõ hạn cuối gửi phiếu.
 
+✅ Kiểm tra thời gian thực: Hợp đồng thông minh luôn so sánh thời gian hiện tại với thời gian kết thúc biểu quyết để xác định tính hợp lệ của phiếu.
 
-🚀Các chức năng chính
+✅ Bỏ phiếu an toàn: Mỗi địa chỉ ví chỉ được bỏ phiếu một lần, phiếu được ghi nhận on-chain, không thể chỉnh sửa hay xóa.
 
-Khởi tạo biểu quyết:
-Quản trị viên (admin) triển khai hợp đồng thông minh với thời gian bắt đầu và kết thúc biểu quyết.
-Xác định các lựa chọn biểu quyết (ví dụ: "Đồng ý", "Không đồng ý").
+✅ Công bố kết quả tự động: Sau khi thời gian biểu quyết kết thúc, smart contract sẽ cho phép hiển thị kết quả dựa trên số phiếu đã thu thập.
 
+❌ Không thể gửi phiếu sau khi hết giờ: Mọi nỗ lực bỏ phiếu sau thời điểm đã định sẽ bị từ chối bởi hợp đồng thông minh.
 
-Bỏ phiếu:
-Người dùng kết nối ví MetaMask để xác thực và gửi phiếu bầu.
-Chỉ cho phép bỏ phiếu trong khoảng thời gian được xác định.
-Mỗi người dùng chỉ được bỏ phiếu một lần.
+💡 Cách hoạt động
+Tạo cuộc biểu quyết:
 
+Admin nhập tiêu đề, các lựa chọn và thời gian bắt đầu/kết thúc.
 
-Khóa thời gian:
-Sau khi thời gian biểu quyết kết thúc, hợp đồng thông minh tự động khóa, ngăn chặn mọi hành động bỏ phiếu mới.
+Thông tin được ghi vào blockchain thông qua smart contract.
 
+Tham gia bỏ phiếu:
 
-Kiểm tra kết quả:
-Kết quả biểu quyết được công khai trên blockchain, bất kỳ ai cũng có thể tra cứu.
-Hiển thị số phiếu cho từng lựa chọn.
+Người dùng kết nối ví (MetaMask), xem đồng hồ đếm ngược và lựa chọn phương án muốn bầu.
 
+Phiếu được gửi on-chain nếu thời gian còn hợp lệ.
 
-Bảo mật:
-Sử dụng địa chỉ ví để xác thực người dùng, ngăn chặn gian lận.
-Dữ liệu được lưu trữ trên blockchain, đảm bảo tính minh bạch và bất biến.
+Kiểm tra thời gian và hợp lệ:
 
+Smart contract sử dụng block.timestamp để kiểm tra thời điểm gửi phiếu.
 
+Nếu vượt quá thời gian kết thúc, không cho phép gửi.
 
-🛠️Công nghệ và kỹ thuật
-Công nghệ sử dụng
+Công bố kết quả:
 
-Blockchain: Ethereum (hoặc các blockchain tương thích EVM như Binance Smart Chain, Polygon).
-Hợp đồng thông minh: Solidity (phiên bản 0.8.x).
-Giao diện người dùng: 
-HTML, CSS, JavaScript.
-Web3.js để tương tác với blockchain.
-React.js (tùy chọn) để xây dựng giao diện động.
+Sau khi thời gian kết thúc, bất kỳ ai cũng có thể gọi hàm đọc kết quả để xem tổng hợp.
 
+🧪 Công nghệ và công cụ sử dụng
 
-Ví tiền điện tử: MetaMask để xác thực và gửi giao dịch.
-Công cụ phát triển:
-Truffle hoặc Hardhat để triển khai và kiểm tra hợp đồng thông minh.
-Remix IDE để phát triển nhanh.
-Ganache để tạo blockchain cục bộ cho mục đích kiểm thử.
+| Thành phần              | Công nghệ áp dụng                      |
+| ----------------------- | -------------------------------------- |
+| Blockchain platform     | Ethereum Testnet (Goerli hoặc Sepolia) |
+| Hợp đồng thông minh     | Solidity                               |
+| Công cụ phát triển      | Hardhat / Remix IDE                    |
+| Giao diện người dùng    | ReactJS, TailwindCSS                   |
+| Kết nối blockchain      | Web3.js hoặc Ethers.js                 |
+| Ví người dùng           | MetaMask                               |
+| Đồng hồ đếm ngược       | JavaScript Timer / React Countdown lib |
+| Kiểm tra thời gian thực | `block.timestamp` trong Solidity       |
 
+📁 Cấu trúc thư mục
+time-lock-voting/
+├── contracts/            # Solidity smart contracts
 
-Lưu trữ dữ liệu: Dữ liệu biểu quyết được lưu trên blockchain, không cần cơ sở dữ liệu bên ngoài.
+│   └── Voting.sol
+├── scripts/              # Triển khai, test contract
 
-⚙Kỹ thuật chính
+│   └── deploy.js
+├── frontend/             # React frontend app
 
-Hợp đồng thông minh:
-Sử dụng Solidity để viết hợp đồng thông minh với các hàm chính: khởi tạo biểu quyết, bỏ phiếu, kiểm tra thời gian, và lấy kết quả.
-Sử dụng modifier để kiểm soát quyền truy cập (chỉ admin khởi tạo, chỉ người dùng bỏ phiếu trong thời gian cho phép).
-Sử dụng biến block.timestamp để kiểm soát thời gian biểu quyết.
+│   ├── src/
 
+│   │   ├── components/
 
-Bảo mật:
-Ngăn chặn bỏ phiếu trùng lặp bằng cách lưu trữ trạng thái của từng địa chỉ ví.
-Sử dụng sự kiện (event) để ghi lại các hành động quan trọng như bỏ phiếu hoặc khóa thời gian.
+│   │   ├── App.js
 
+│   │   └── utils/
 
-Tương tác người dùng:
-Sử dụng Web3.js để kết nối DApp với blockchain.
-Giao diện web hiển thị thời gian còn lại, các lựa chọn biểu quyết, và kết quả trực quan.
+│   └── public/
 
+├── test/                 # Unit tests cho smart contract
 
+├── README.md             # Giới thiệu dự án
 
-💡Hướng dẫn triển khai
+└── hardhat.config.js     # Cấu hình dự án Hardhat
 
-Chuẩn bị môi trường:
-Cài đặt Node.js, Truffle/Hardhat, và MetaMask.
-Tạo một blockchain cục bộ bằng Ganache hoặc sử dụng testnet (Ropsten, Rinkeby).
+🚀 Hướng dẫn chạy thử
+✅ Yêu cầu
+Node.js
 
+MetaMask
 
-Viết hợp đồng thông minh:
-Dưới đây là một mẫu hợp đồng thông minh đơn giản bằng Solidity:
+Hardhat
 
+Ethereum testnet (Goerli hoặc Sepolia)
 
+🔄 Triển khai local
 
+git clone https://github.com/vietchau89/Nhom5---VietChau---Blockchain.git
 
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-contract VotingSystem {
-    struct Candidate {
-        string name;
-        uint voteCount;
-    }
-
-    mapping(address => bool) public hasVoted;
-    Candidate[] public candidates;
-
-    constructor(string[] memory candidateNames) {
-        for (uint i = 0; i < candidateNames.length; i++) {
-            candidates.push(Candidate(candidateNames[i], 0));
-        }
-    }
-
-    function vote(uint candidateIndex) public {
-        require(!hasVoted[msg.sender], "Already voted!");
-        hasVoted[msg.sender] = true;
-        candidates[candidateIndex].voteCount++;
-    }
-
-    function getCandidates() public view returns (Candidate[] memory) {
-        return candidates;
-    }
-}
-
-📌Hướng dẫn cài đặt và chạy dự án
-Clone repository:
-bash
-
-
-
-
-git clone <your-repo-url>
-
-Cài đặt phụ thuộc:
-bash
-
-
-
+cd time-lock-voting
 
 npm install
 
-Triển khai hợp đồng:
+npx hardhat compile
 
-bash
+npx hardhat run scripts/deploy.js --network goerli
 
+cd frontend
 
+npm install
 
-
-truffle migrate --network <network-name>
-Chạy giao diện:
-
-Mở file index.html trong trình duyệt hoặc chạy server cục bộ bằng npm start (nếu sử dụng React).
-
-Kết nối MetaMask và sử dụng DApp để bỏ phiếu.
+npm run start
 
 👨‍💻 Tác giả
-
+ 
 Nguyễn Việt Châu
 
 MSV: 1571020025
-
